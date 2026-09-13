@@ -1,0 +1,47 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Switch 2 USB Sniffer"
+run/main_scene="uid://dyuja7r74u42k"
+config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
+run/low_processor_mode=true
+config/icon="res://icon.svg"
+
+[audio]
+
+driver/driver="Dummy"
+
+[display]
+
+window/size/viewport_width=1800
+window/size/viewport_height=1080
+window/stretch/aspect="ignore"
+window/vsync/vsync_mode=0
+
+[dotnet]
+
+project/assembly_name="Switch2USBSniffer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/tau-plot/plugin.cfg")
+
+[physics]
+
+2d/physics_engine="Dummy"
+3d/physics_engine="Dummy"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

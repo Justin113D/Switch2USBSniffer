@@ -1,0 +1,919 @@
+[gd_scene format=3 uid="uid://dyuja7r74u42k"]
+
+[ext_resource type="Script" uid="uid://dfqagirux06t5" path="res://Scripts/GamepadOutputController.cs" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://bmfc10r5bh7xe" path="res://Scripts/MainController.cs" id="1_h2yge"]
+[ext_resource type="SystemFont" uid="uid://bcydh7yui7jdm" path="res://monospace.tres" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://dnhvsf2wip771" path="res://addons/tau-plot/plot/plot.gd" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://cbd0yuyummxmq" path="res://Scripts/GyroPlotController.gd" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bxik3jshy7avq" path="res://Gamepad.glb" id="6_7mycd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvp3"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lquwl"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.5372549, 0.5372549, 0.5372549, 0)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3mno"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.0005162346, 0.0005162346, 0.0005162346, 0.27450982)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y3mno"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xcb45"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_te6j0"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_df8fl"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 54
+corner_radius_top_right = 54
+corner_radius_bottom_right = 54
+corner_radius_bottom_left = 54
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xm2m"]
+draw_center = false
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
+draw_center = false
+border_width_left = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
+draw_center = false
+border_width_top = 1
+border_width_right = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcb45"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 54
+corner_radius_top_right = 54
+corner_radius_bottom_right = 54
+corner_radius_bottom_left = 54
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vw27"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.0005162346, 0.0005162346, 0.0005162346, 0.27450982)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Environment" id="Environment_y3mno"]
+background_mode = 1
+background_color = Color(0.16062862, 0.16062862, 0.16062862, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.6431373, 0.6431373, 0.6431373, 1)
+reflected_light_source = 1
+
+[node name="Control" type="PanelContainer" unique_id=52111262 node_paths=PackedStringArray("ConnectionMenu", "GamepadOutputController", "CommandOutput", "SetupOutput")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h2yge")
+ConnectionMenu = NodePath("VBoxContainer/PanelContainer/MenuBar/Connection")
+GamepadOutputController = NodePath("VBoxContainer/GamepadOutput")
+CommandOutput = NodePath("VBoxContainer/GamepadOutput/HBoxContainer/TabContainer/Command Output/RichTextLabel_CommandOutput")
+SetupOutput = NodePath("VBoxContainer/GamepadOutput/HBoxContainer/TabContainer/Setup Output/RichTextLabel_SetupOutput")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1973872296]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1100775573]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1bvp3")
+
+[node name="MenuBar" type="MenuBar" parent="VBoxContainer/PanelContainer" unique_id=1442705832]
+layout_mode = 2
+flat = true
+
+[node name="Connection" type="PopupMenu" parent="VBoxContainer/PanelContainer/MenuBar" unique_id=740094458]
+oversampling_override = 1.0
+size = Vector2i(126, 100)
+item_count = 3
+item_0/id = 0
+item_0/separator = true
+item_1/text = "Refresh"
+item_1/id = 1
+item_2/text = "Disconnect"
+item_2/id = 2
+item_2/disabled = true
+
+[node name="GamepadOutput" type="PanelContainer" parent="VBoxContainer" unique_id=1468540783 node_paths=PackedStringArray("DataText", "MotionDataText", "ButtonControls", "LeftStickSpot", "LeftStickText", "RightStickSpot", "RightStickText", "GyroPlot", "GamepadModel")]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_lquwl")
+script = ExtResource("1_0xm2m")
+DataText = NodePath("HBoxContainer/ScrollContainer/VBoxContainer/RawOutput/VBoxContainer/TextEdit")
+MotionDataText = NodePath("HBoxContainer/ScrollContainer2/VBoxContainer/RawMotionOutput/VBoxContainer/TextEdit")
+ButtonControls = [NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_B"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_A"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Y"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_X"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_R"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_ZR"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Plus"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_RightStick"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Down"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Right"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Left"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Up"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_L"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_ZL"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Minus"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_LS"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Home"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Capture"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_GR"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_GL"), NodePath("HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_C")]
+LeftStickSpot = NodePath("HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer/JoystickGraph/JoystickSpot")
+LeftStickText = NodePath("HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer/Label")
+RightStickSpot = NodePath("HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer2/JoystickGraph/JoystickSpot")
+RightStickText = NodePath("HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer2/Label")
+GyroPlot = NodePath("HBoxContainer/TabContainer/Gyro plots")
+GamepadModel = NodePath("HBoxContainer/ScrollContainer2/VBoxContainer/RawMotionOutput2/VBoxContainer/SubViewportContainer/SubViewport/Node3D/Gamepad2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/GamepadOutput" unique_id=1194730393]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer" unique_id=382194587]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer" unique_id=705939765]
+layout_mode = 2
+
+[node name="RawOutput" type="PanelContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1124333997]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_y3mno")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/RawOutput" unique_id=1028360483]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/RawOutput/VBoxContainer" unique_id=1242948204]
+layout_mode = 2
+text = "Raw"
+horizontal_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/RawOutput/VBoxContainer" unique_id=267707073]
+custom_minimum_size = Vector2(0, 167.265)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_y3mno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xcb45")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_te6j0")
+placeholder_text = "00 11 22 33  44 55 66 77
+88 99 AA BB  CC DD EE FF
+00 11 22 33  44 55 66 77
+88 99 AA BB  CC DD EE FF
+00 11 22 33  44 55 66 77
+88 99 AA BB  CC DD EE FF
+00 11 22 33  44 55 66 77
+88 99 AA BB  CC DD EE FF"
+editable = false
+
+[node name="ButtonOutput" type="PanelContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1398204507]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_y3mno")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput" unique_id=764943640]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer" unique_id=1710138585]
+layout_mode = 2
+text = "Buttons"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer" unique_id=1369704041]
+layout_mode = 2
+columns = 8
+
+[node name="ButtonRect_B" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=828327804]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_B" unique_id=311846841]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "B"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_A" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=183553404]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_A" unique_id=342979556]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_Y" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=878566939]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Y" unique_id=267982301]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "Y"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_X" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=1418947177]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_X" unique_id=1227034334]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_R" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=1459833396]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_R" unique_id=431063]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "R"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_ZR" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=1328960751]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_ZR" unique_id=1124131061]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "ZR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_Plus" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=442853339]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Plus" unique_id=1813839383]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_RightStick" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=1871318038]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_RightStick" unique_id=113724642]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "RS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_Down" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=1948144963]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Down" unique_id=1080141169]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "DD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_Right" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=2000601696]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Right" unique_id=576849888]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "DR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_Left" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=1010528687]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Left" unique_id=9536203]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "DL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_Up" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=1860810672]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Up" unique_id=1798985005]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "DU"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_L" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=838717364]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_L" unique_id=2021221989]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "L"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_ZL" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=2099069112]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_ZL" unique_id=1759361584]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "ZL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_Minus" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=977356980]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Minus" unique_id=3942688]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_LS" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=134283847]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_LS" unique_id=265819096]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "LS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_Home" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=655772162]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Home" unique_id=792185188]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "Ho"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_Capture" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=935369599]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_Capture" unique_id=1878890386]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "Ca"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_GR" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=1258121544]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_GR" unique_id=963602879]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "GR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_GL" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=1827016235]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_GL" unique_id=487574049]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "GL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRect_C" type="ColorRect" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer" unique_id=1573755746]
+self_modulate = Color(0.5037685, 0.5037685, 0.50376844, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/ButtonOutput/VBoxContainer/GridContainer/ButtonRect_C" unique_id=269052754]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 16
+text = "C"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JoystickOutput" type="PanelContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1230904721]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_y3mno")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput" unique_id=172946302]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer" unique_id=96296555]
+layout_mode = 2
+text = "Joysticks"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer" unique_id=1876087670]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer" unique_id=1287357037]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="JoystickGraph" type="Panel" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1361689762]
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_df8fl")
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer/JoystickGraph" unique_id=318954398]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer/JoystickGraph/GridContainer" unique_id=690743028]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0xm2m")
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer/JoystickGraph/GridContainer" unique_id=320653661]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_h2yge")
+
+[node name="Panel3" type="Panel" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer/JoystickGraph/GridContainer" unique_id=539389994]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mycd")
+
+[node name="Panel4" type="Panel" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer/JoystickGraph/GridContainer" unique_id=1925239404]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_xcb45")
+
+[node name="JoystickSpot" type="Panel" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer/JoystickGraph" unique_id=1393965012]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_272bh")
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=996864949]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 14
+text = "X: 0
+Y: 0"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer" unique_id=1267198866]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="JoystickGraph" type="Panel" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1595459261]
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_df8fl")
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer2/JoystickGraph" unique_id=310325472]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer2/JoystickGraph/GridContainer" unique_id=1453656861]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0xm2m")
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer2/JoystickGraph/GridContainer" unique_id=1159711751]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_h2yge")
+
+[node name="Panel3" type="Panel" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer2/JoystickGraph/GridContainer" unique_id=1363163726]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_7mycd")
+
+[node name="Panel4" type="Panel" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer2/JoystickGraph/GridContainer" unique_id=578416971]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_xcb45")
+
+[node name="JoystickSpot" type="Panel" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer2/JoystickGraph" unique_id=1857381615]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_272bh")
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer/VBoxContainer/JoystickOutput/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1209708836]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_font_sizes/font_size = 14
+text = "X: 0
+Y: 0"
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer" unique_id=573058763]
+layout_mode = 2
+size_flags_horizontal = 3
+current_tab = 0
+
+[node name="Command Output" type="PanelContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/TabContainer" unique_id=1443463254]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_5vw27")
+metadata/_tab_index = 0
+
+[node name="RichTextLabel_CommandOutput" type="RichTextLabel" parent="VBoxContainer/GamepadOutput/HBoxContainer/TabContainer/Command Output" unique_id=1443385211]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_h2yge")
+
+[node name="Setup Output" type="PanelContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/TabContainer" unique_id=1217827030]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_5vw27")
+metadata/_tab_index = 1
+
+[node name="RichTextLabel_SetupOutput" type="RichTextLabel" parent="VBoxContainer/GamepadOutput/HBoxContainer/TabContainer/Setup Output" unique_id=59630382]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_h2yge")
+
+[node name="Gyro plots" type="PanelContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/TabContainer" unique_id=717900263]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_y3mno")
+script = ExtResource("4_lquwl")
+metadata/_tab_index = 2
+
+[node name="GyroPlot" type="PanelContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/TabContainer/Gyro plots" unique_id=326369936]
+layout_mode = 2
+theme_type_variation = &"TauPlot"
+script = ExtResource("4_1bvp3")
+metadata/_custom_type_script = "uid://dnhvsf2wip771"
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer" unique_id=1426176552]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer2" unique_id=250465744]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RawMotionOutput2" type="PanelContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer2/VBoxContainer" unique_id=814761513]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_y3mno")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer2/VBoxContainer/RawMotionOutput2" unique_id=1835714898]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer2/VBoxContainer/RawMotionOutput2/VBoxContainer" unique_id=2114165755]
+layout_mode = 2
+text = "Rotation"
+horizontal_alignment = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer2/VBoxContainer/RawMotionOutput2/VBoxContainer" unique_id=1591057695]
+custom_minimum_size = Vector2(330, 330)
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer2/VBoxContainer/RawMotionOutput2/VBoxContainer/SubViewportContainer" unique_id=2029128921]
+handle_input_locally = false
+size = Vector2i(330, 330)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer2/VBoxContainer/RawMotionOutput2/VBoxContainer/SubViewportContainer/SubViewport" unique_id=1738064642]
+transform = Transform3D(1, 0, 0, 0, 0.68961954, 0.7241718, 0, -0.7241718, 0.68961954, 0, 0, 0)
+
+[node name="Gamepad2" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer2/VBoxContainer/RawMotionOutput2/VBoxContainer/SubViewportContainer/SubViewport/Node3D" unique_id=2142528071 instance=ExtResource("6_7mycd")]
+
+[node name="Camera3D" type="Camera3D" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer2/VBoxContainer/RawMotionOutput2/VBoxContainer/SubViewportContainer/SubViewport" unique_id=1329283516]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.45, 0)
+projection = 1
+size = 2.5
+far = 10.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer2/VBoxContainer/RawMotionOutput2/VBoxContainer/SubViewportContainer/SubViewport" unique_id=1115340215]
+environment = SubResource("Environment_y3mno")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer2/VBoxContainer/RawMotionOutput2/VBoxContainer/SubViewportContainer/SubViewport" unique_id=2033113486]
+transform = Transform3D(0.9063078, 0.38302222, 0.17860621, -3.694646e-08, -0.42261824, 0.9063078, 0.42261827, -0.82139385, -0.3830222, 0, 1.1009148, 0)
+light_energy = 1.5
+sky_mode = 1
+
+[node name="RawMotionOutput" type="PanelContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer2/VBoxContainer" unique_id=697695243]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_y3mno")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer2/VBoxContainer/RawMotionOutput" unique_id=884832509]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer2/VBoxContainer/RawMotionOutput/VBoxContainer" unique_id=216700331]
+layout_mode = 2
+text = "Raw Motion"
+horizontal_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/GamepadOutput/HBoxContainer/ScrollContainer2/VBoxContainer/RawMotionOutput/VBoxContainer" unique_id=431178346]
+custom_minimum_size = Vector2(330, 500)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_h2yge")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_y3mno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xcb45")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_te6j0")
+placeholder_text = "01010101 01010101 01010101 01010101 
+01010101 01010101 01010101 01010101
+01010101 01010101 01010101 01010101
+01010101 01010101 01010101 01010101
+01010101 01010101 01010101 01010101
+01010101 01010101 01010101 01010101
+01010101 01010101 01010101 01010101
+01010101 01010101"
+editable = false
+
+[connection signal="id_pressed" from="VBoxContainer/PanelContainer/MenuBar/Connection" to="." method="OnConnectionMenuItemPressed"]

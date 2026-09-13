@@ -1,0 +1,13 @@
+﻿<Project Sdk="Godot.NET.Sdk/4.7.2">
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<EnableDynamicLoading>true</EnableDynamicLoading>
+		<RootNamespace>Switch2USBSniffer</RootNamespace>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Amicitia.IO" Version="1.2.1" />
+		<PackageReference Include="SerialPortStream" Version="2.4.2" />
+	</ItemGroup>
+</Project>
