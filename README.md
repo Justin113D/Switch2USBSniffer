@@ -16,3 +16,8 @@ To use:
 > ![WARNING]
 > The code in this was hastily put together and is, at least by my personal standards, horrible. I do not recommend using this as reference for production level projects - and if you do, do so at your own risk. 
 > The USB link layer code especially is a hot mess, but it does the job good enough to inspect the most important communication.
+
+# Development Resources 
+[Tanas pico USB sniffer](https://github.com/tana/pico_usb_sniffer) - Pico firmware that this tool relies on <br/>
+[Ndeadlys Switch 2 controller research](https://github.com/ndeadly/switch2_controller_research) - Controller research that this tool is based on (also has a discord link) <br/>
+[Wiring diagram for USB-C to USB-A](https://electronics.stackexchange.com/questions/323128/wiring-diagram-for-usb-c-to-usb-a-cable)
